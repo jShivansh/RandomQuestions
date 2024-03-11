@@ -1,0 +1,48 @@
+body {
+    text-align: center;
+}
+
+.container {
+    justify-content: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 2px solid black;
+    box-shadow: 5px 10px #888888;
+    margin-bottom: 5em;
+    text-align: center;
+}
+
+.numbers{
+    width: 80%;
+}
+
+.nums {
+    width: 80%;
+    margin: 2em;
+}
+select {
+    width: 30%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+
+.operations{
+    width: 80%;
+    margin: 2em;
+}
+
+button{
+    background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
