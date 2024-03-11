@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Number Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Start your Practice: </h1>
+  <div class="container">
+    <div class="numbers">
+      <div class="nums">
+        <label for="numDigits1">Digits for Number 1:</label>
+        <select id="numDigits1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="nums">
+        <label for="numDigits2">Digits for Number 2:</label>
+        <select id="numDigits2">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+    </div>
+    <div class="operations">
+      <label for="operation">Select operation:</label>
+      <select id="operation">
+        <option value="add">Addition</option>
+        <option value="subtract">Subtraction</option>
+        <option value="multiply">Multiplication</option>
+        <option value="divide">Division</option>
+      </select>
+    </div>
+  <button onclick="generateRandomNumbers()">Generate Random Numbers</button>
+</div>
+  <div id="randomNumbersContainer" class="container"></div>
+
+  <script>
+    function generateRandomNumbers() {
+      const numDigits1 = document.getElementById('numDigits1').value;
+      const numDigits2 = document.getElementById('numDigits2').value;
+      const operation = document.getElementById('operation').value;
+
+      const randomNumber1 = generateRandomNumber(numDigits1);
+      const randomNumber2 = generateRandomNumber(numDigits2);
+
+      const randomNumbersContainer = document.getElementById('randomNumbersContainer');
+      randomNumbersContainer.innerHTML = `
+        <p>${randomNumber1} ${operation} ${randomNumber2}</p>
+        <label for="userAnswer">Enter your answer:</label>
+        <input type="number" id="userAnswer">
+        <button onclick="checkAnswer(${randomNumber1}, ${randomNumber2}, '${operation}')">Submit Answer</button>
+      `;
+    }
+
+    function checkAnswer(randomNumber1, randomNumber2, operation) {
+      const userAnswer = parseInt(document.getElementById('userAnswer').value);
+      let correctAnswer;
+
+      switch (operation) {
+        case 'add':
+          correctAnswer = randomNumber1 + randomNumber2;
+          break;
+        case 'subtract':
+          correctAnswer = randomNumber1 - randomNumber2;
+          break;
+        case 'multiply':
+          correctAnswer = randomNumber1 * randomNumber2;
+          break;
+        case 'divide':
+          correctAnswer = randomNumber1 / randomNumber2;
+          break;
+        default:
+          return;
+      }
+
+      const isAnswerCorrect = userAnswer === correctAnswer;
+      alert(`Your answer is ${isAnswerCorrect ? 'correct' : 'incorrect'}.`);
+    }
+
+    function generateRandomNumber(numDigits) {
+      const min = Math.pow(10, numDigits - 1);
+      const max = Math.pow(10, numDigits) - 1;
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  </script>
+</body>
+</html>
